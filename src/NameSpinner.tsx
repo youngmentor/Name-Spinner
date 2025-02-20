@@ -245,7 +245,13 @@ const FileUploadSpinner = () => {
                 <h3 className="text-sm font-medium text-gray-700 mb-2">Loaded Participants ({participants.length})</h3>
                 <div className="flex flex-wrap gap-2">
                   {participants.map((participant, index) => (
-                    <span key={index} className="px-3 py-1 bg-white border rounded-full text-sm text-gray-700">
+                    <span
+                      key={index}
+                      className={`px-3 py-1 rounded-full text-sm transition-colors duration-300 ${participant.name === selectedName
+                        ? "bg-purple-500 text-white font-medium"
+                        : "bg-white border text-gray-700"
+                        }`}
+                    >
                       {participant.name}
                     </span>
                   ))}

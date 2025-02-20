@@ -1,11 +1,12 @@
 import React from 'react';
-import NameSpinner from './NameSpinner';
+
+import FileUploadSpinner from './NameSpinner';
 
 
 const App: React.FC = () => {
   return (
     <div>
-      <NameSpinner />
+      <FileUploadSpinner />
     </div>
   );
 };

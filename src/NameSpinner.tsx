@@ -116,7 +116,7 @@ const FileUploadSpinner = () => {
       <Card className="w-full max-w-2xl shadow-xl">
         <CardHeader>
           <CardTitle className="text-3xl font-bold text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            {isSetupComplete ? meetingName : 'Meeting Setup'}
+            {isSetupComplete ? meetingName : 'Selection Setup'}
           </CardTitle>
         </CardHeader>
 
@@ -185,7 +185,7 @@ const FileUploadSpinner = () => {
                 type="submit"
                 className="w-full px-4 py-2 text-white bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg hover:from-blue-600 hover:to-purple-600 transition-all duration-200"
               >
-                Start Meeting
+                Start Selection
               </button>
             </form>
           ) : (

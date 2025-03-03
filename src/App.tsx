@@ -1,12 +1,21 @@
 import React from 'react';
-
-import FileUploadSpinner from './NameSpinner';
+import { Routes, Route, HashRouter } from 'react-router-dom';
+import CreateMeeting from './pages/createMeeting';
+import MeetingsList from './pages/meetingList';
+import AddParticipants from './pages/addParticipants';
+// import FileUploadSpinner from './NameSpinner';
 
 
 const App: React.FC = () => {
   return (
     <div>
-      <FileUploadSpinner />
+      <HashRouter>
+        <Routes>
+          <Route path='/' element={<CreateMeeting />} />
+          <Route path='/meetings' element={<MeetingsList />} />
+          <Route path='meetings/id/add-participants' element={<AddParticipants />} />
+        </Routes>
+      </HashRouter>
     </div>
   );
 };

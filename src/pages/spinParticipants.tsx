@@ -21,6 +21,8 @@ const ParticipantsList = () => {
     const [rollingNames, setRollingNames] = useState<string[]>([]);
     const [excludeRecentlySelected, setExcludeRecentlySelected] = useState(true);
     const [selectionHistory, setSelectionHistory] = useState<{
+        participantName: string;
+        selectedAt: string;
         meetingId: string;
         meetingName: string;
         date: string;
@@ -124,6 +126,8 @@ const ParticipantsList = () => {
 
             if (meeting) {
                 const newSelection = {
+                    participantName: chosenParticipant.name,
+                    selectedAt: new Date().toISOString(),
                     meetingId: meetingId!,
                     meetingName: meeting.name,
                     date: new Date().toISOString(),
@@ -351,8 +355,8 @@ const ParticipantsList = () => {
                                         {selectionHistory.map((session, index) => (
                                             <div key={index} className="p-3 bg-white border rounded-lg">
                                                 <div className="flex justify-between">
-                                                    <span className="font-semibold text-purple-600">{session.selectedName}</span>
-                                                    <span className="text-xs text-gray-500">{formatDate(session.date)}</span>
+                                                    <span className="font-semibold text-purple-600">{session.participantName}</span>
+                                                    <span className="text-xs text-gray-500">{formatDate(session.selectedAt)}</span>
                                                 </div>
                                                 <div className="text-sm text-gray-600 mt-1">
                                                     {session.meetingName}

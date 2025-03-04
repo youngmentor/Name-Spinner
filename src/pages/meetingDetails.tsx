@@ -36,7 +36,7 @@ const MeetingDetails = () => {
         console.log('participant error', meetingError)
         return (
             <div className="text-center py-8 text-red-500">
-                {participantsError?.message || meetingError?.message || 'Meeting not found'}
+                Meeting not found
             </div>
         );
     }
@@ -64,7 +64,7 @@ const MeetingDetails = () => {
                         </div>
                     </div>
                     <p className="text-gray-600">{meeting?.department}</p>
-                    <p className="text-sm text-gray-500">Created: {formatDate(meeting?.createdAt)}</p>
+                    <p className="text-sm text-gray-500">Created: {meeting?.createdAt ? formatDate(meeting.createdAt) : 'N/A'}</p>
                 </CardHeader>
                 <CardContent>
                     <Tabs defaultValue="summary">

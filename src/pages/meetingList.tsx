@@ -51,7 +51,7 @@ const MeetingsList = () => {
                         <div className="text-center py-12">
                             <p className="text-gray-500 mb-4">You don't have any meetings yet</p>
                             <Link
-                                to="/create"
+                                to="/"
                                 className="px-4 py-2 text-white bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg hover:from-blue-600 hover:to-purple-600 transition-all duration-200"
                             >
                                 Create Your First Meeting
@@ -62,7 +62,7 @@ const MeetingsList = () => {
                             {meetings?.map((meeting) => (
                                 <div key={meeting?._id} className="border rounded-lg p-4 hover:shadow-md transition-shadow">
                                     <div className="flex justify-between mb-2">
-                                        <h3 className="font-bold text-lg">{meeting.meetingName}</h3>
+                                        <h3 className="font-bold text-lg">{meeting.name}</h3>
                                         <span className="text-xs text-gray-500">{formatDate(meeting.createdAt)}</span>
                                     </div>
                                     <p className="text-gray-600 text-sm mb-3">{meeting?.department}</p>
@@ -77,7 +77,7 @@ const MeetingsList = () => {
                                             Details
                                         </Link>
                                         <Link
-                                            to={`/meetings/${meeting?._id}/participants`}
+                                            to={`/meetings/${meeting?._id}/spin-participants`}
                                             className="text-xs px-3 py-1.5 border rounded hover:bg-gray-50 flex items-center gap-1"
                                         >
                                             <UserPlus className="h-3 w-3" /> Participants

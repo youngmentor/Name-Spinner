@@ -1,6 +1,7 @@
 // types.ts
 export type ParticipantData = {
-    id?: string;
+    department: string;
+    _id: string;
     name: string;
     role?: string;
     email?: string;
@@ -12,7 +13,7 @@ export type MeetingData = {
     participants: ParticipantData[];
     _id: string;
     department: string;
-    meetingName: string;
+    name: string;
     createdAt: string;
     updatedAt?: string;
     participantsCount?: number;

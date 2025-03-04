@@ -6,8 +6,10 @@ import { Label } from '@/components/ui/label';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { AlertCircle, Check } from 'lucide-react';
 import { createMeeting } from '../services/api';
+import { useNavigate } from 'react-router-dom';
 
 const CreateMeeting = () => {
+    const navigate = useNavigate()
     const [department, setDepartment] = useState('');
     const [meetingName, setMeetingName] = useState('');
     const [meetingDescription, setMeetingDescription] = useState('');
@@ -18,6 +20,7 @@ const CreateMeeting = () => {
             setDepartment('');
             setMeetingName('');
             setMeetingDescription('');
+            navigate('/meetings')
         },
     });
 

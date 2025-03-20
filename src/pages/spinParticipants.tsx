@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Switch } from '@/components/ui/switch';
-import { RotateCw, AlertCircle, RefreshCw, Sparkles, History } from 'lucide-react';
+import { RotateCw, AlertCircle, Sparkles, History } from 'lucide-react';
 import { clearSelectionHistory, createSelectionRecord, getMeeting, getParticipantsByMeetingId, getSelectionHistory } from '../services/api';
 import { MeetingData, ParticipantData } from '../types/types';
 import { useQuery } from 'react-query';
 
 const ParticipantsList = () => {
     const { meetingId } = useParams<{ meetingId: string }>();
-    const navigate = useNavigate();
     const [selectedName, setSelectedName] = useState<string | null>(null);
     const [isSpinning, setIsSpinning] = useState(false);
     const [showSparkle, setShowSparkle] = useState(false);
@@ -198,12 +197,6 @@ const ParticipantsList = () => {
                     <CardTitle className="text-3xl font-bold text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                         {meeting?.name}
                     </CardTitle>
-                    <button
-                        onClick={() => navigate('/meetings')}
-                        className="absolute top-4 left-4 p-2 rounded-full hover:bg-gray-100"
-                    >
-                        <RefreshCw size={16} className="text-gray-500" />
-                    </button>
                 </CardHeader>
 
                 <CardContent>

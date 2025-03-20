@@ -9,12 +9,12 @@ import { MeetingData, ParticipantData } from '../types/types';
 const MeetingDetails = () => {
     const { meetingId } = useParams<{ meetingId: string }>();
 
-    const { data: meeting, isLoading: meetingLoading, error: meetingError } = useQuery<MeetingData>(['meeting', meetingId], async () => {
+    const { data: meeting, isLoading: meetingLoading, error: meetingError } = useQuery<MeetingData>(['ALL_MEETIMG', meetingId], async () => {
         const response = await getMeeting(meetingId!);
         return response.data;
     }, { enabled: !!meetingId });
 
-    const { data: participants, isLoading: participantsLoading, error: participantsError } = useQuery<ParticipantData[]>(['ALL_PARTICIPANTS_BY_MEETINGID', meetingId], async () => {
+    const { data: participants, isLoading: participantsLoading, error: participantsError } = useQuery<ParticipantData[]>([`ALL_PARTICIPANTS_BY_MEETINGID${meetingId}`, meetingId], async () => {
         const response = await getParticipantsByMeetingId(meetingId!);
         return response.data.participants;
     }, { enabled: !!meetingId });

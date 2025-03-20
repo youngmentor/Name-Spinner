@@ -12,8 +12,8 @@ const App: React.FC = () => {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<CreateMeeting />} />
-          <Route path='/meetings' element={<MeetingsList />} />
+          <Route path='/create-meeting' element={<CreateMeeting />} />
+          <Route path='/' element={<MeetingsList />} />
           <Route path='/meetings/:meetingId' element={<MeetingDetails />} />
           <Route path='/meetings/:id/add-participants' element={<AddParticipants />} />
           <Route path='/meetings/:meetingId/spin-participants' element={<ParticipantsList />} />

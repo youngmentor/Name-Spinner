@@ -33,7 +33,7 @@ const MeetingsList = () => {
                         Your Meetings
                     </CardTitle>
                     <Link
-                        to="/"
+                        to="/create-meeting"
                         className="px-4 py-2 text-sm text-white bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg hover:from-blue-600 hover:to-purple-600 transition-all duration-200"
                     >
                         Create New Meeting
@@ -51,7 +51,7 @@ const MeetingsList = () => {
                         <div className="text-center py-12">
                             <p className="text-gray-500 mb-4">You don't have any meetings yet</p>
                             <Link
-                                to="/"
+                                to="/create-meeting"
                                 className="px-4 py-2 text-white bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg hover:from-blue-600 hover:to-purple-600 transition-all duration-200"
                             >
                                 Create Your First Meeting

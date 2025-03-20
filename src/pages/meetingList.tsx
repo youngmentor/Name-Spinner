@@ -6,13 +6,14 @@ import { MeetingData } from '@/types/types';
 import { getAllMeeting } from '@/services/api';
 
 const MeetingsList = () => {
-
-    const { data: meetings, isLoading, error } = useQuery<MeetingData[]>(['ALL_MEETIMG'], async () => {
-        const response = await getAllMeeting();
-        return response.data;
+    const { data: meetings, isLoading, error } = useQuery<MeetingData[]>({
+        queryKey: ['MEETING_LIST'],
+        queryFn: async () => {
+            const response = await getAllMeeting();
+            return response.data;
+        },
     });
 
-    console.log(meetings)
     const formatDate = (dateString: string) => {
         const options: Intl.DateTimeFormatOptions = {
             year: 'numeric',
@@ -32,7 +33,7 @@ const MeetingsList = () => {
                         Your Meetings
                     </CardTitle>
                     <Link
-                        to="/create-meeting"
+                        to="/"
                         className="px-4 py-2 text-sm text-white bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg hover:from-blue-600 hover:to-purple-600 transition-all duration-200"
                     >
                         Create New Meeting
@@ -50,7 +51,7 @@ const MeetingsList = () => {
                         <div className="text-center py-12">
                             <p className="text-gray-500 mb-4">You don't have any meetings yet</p>
                             <Link
-                                to="/create-meeting"
+                                to="/"
                                 className="px-4 py-2 text-white bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg hover:from-blue-600 hover:to-purple-600 transition-all duration-200"
                             >
                                 Create Your First Meeting

@@ -19,7 +19,6 @@ const MeetingDetails = () => {
         return response.data.participants;
     }, { enabled: !!meetingId });
 
-    // const { data: history, isLoading: historyLoading, error: historyError } = useQuery<MeetingSession[]>(['history', meetingId], () => getSelectionHistory(meetingId!), { enabled: !!meetingId });
 
     if (participantsLoading || meetingLoading) {
         console.log('participant error', participantsError)
@@ -58,9 +57,13 @@ const MeetingDetails = () => {
                             <Link to={`/meetings/${meetingId}/add-participants`} className="px-3 py-1.5 border rounded hover:bg-gray-50 flex items-center gap-1 text-sm">
                                 <UserPlus className="h-4 w-4" /> Add Participants
                             </Link>
-                            <Link to={`/meetings/${meetingId}/spin-participants`} className="px-3 py-1.5 bg-blue-500 text-white rounded hover:bg-blue-600 flex items-center gap-1 text-sm">
-                                <Play className="h-4 w-4" /> Start Spinner
-                            </Link>
+                            {
+                                participants?.length !== 0 &&  
+                                <Link to={`/meetings/${meetingId}/spin-participants`} className="px-3 py-1.5 bg-blue-500 text-white rounded hover:bg-blue-600 flex items-center gap-1 text-sm">
+                                    <Play className="h-4 w-4" /> Start Spinner
+                                </Link>
+                            }
+                          
                         </div>
                     </div>
                     <p className="text-gray-600">{meeting?.department}</p>
@@ -71,7 +74,6 @@ const MeetingDetails = () => {
                         <TabsList className="mb-4">
                             <TabsTrigger value="summary">Summary</TabsTrigger>
                             <TabsTrigger value="participants">Participants</TabsTrigger>
-                            <TabsTrigger value="history">Selection History</TabsTrigger>
                         </TabsList>
                         <TabsContent value="summary">
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -120,32 +122,6 @@ const MeetingDetails = () => {
                                 </div>
                             )}
                         </TabsContent>
-                        {/* <TabsContent value="history">
-                            {history?.length === 0 ? (
-                                <div className="text-center py-6">
-                                    <p className="text-gray-500">No selection history yet</p>
-                                </div>
-                            ) : (
-                                <div className="border rounded-lg overflow-hidden">
-                                    <table className="min-w-full">
-                                        <thead className="bg-gray-50">
-                                            <tr>
-                                                <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Selected Person</th>
-                                                <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody className="bg-white divide-y divide-gray-200">
-                                            {history?.map((session, index) => (
-                                                <tr key={index}>
-                                                    <td className="px-4 py-2 text-sm text-gray-900">{session.selectedName}</td>
-                                                    <td className="px-4 py-2 text-sm text-gray-500">{formatDate(session.date)}</td>
-                                                </tr>
-                                            ))}
-                                        </tbody>
-                                    </table>
-                                </div>
-                            )}
-                        </TabsContent> */}
                     </Tabs>
                 </CardContent>
             </Card>

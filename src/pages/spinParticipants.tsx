@@ -13,8 +13,6 @@ import { useQuery } from 'react-query';
 const ParticipantsList = () => {
     const { meetingId } = useParams<{ meetingId: string }>();
     const navigate = useNavigate();
-
-    // Spinner states
     const [selectedName, setSelectedName] = useState<string | null>(null);
     const [isSpinning, setIsSpinning] = useState(false);
     const [showSparkle, setShowSparkle] = useState(false);
@@ -47,17 +45,16 @@ const ParticipantsList = () => {
         if (meetingId) {
             getSelectionHistory(meetingId)
                 .then(data => {
-                    // Ensure data is an array
                     if (Array.isArray(data)) {
                         setSelectionHistory(data);
                     } else {
                         console.error('Expected an array but got:', data);
-                        setSelectionHistory([]); // Fallback to an empty array
+                        setSelectionHistory([]); 
                     }
                 })
                 .catch(error => {
                     console.error('Error fetching selection history:', error);
-                    setSelectionHistory([]); // Fallback to an empty array
+                    setSelectionHistory([]);
                 });
         }
     }, [meetingId]);
@@ -74,20 +71,19 @@ const ParticipantsList = () => {
         if (excludeRecentlySelected && selectionHistory.length > 0) {
             const recentlySelected = new Map();
             selectionHistory.forEach(record => {
-                recentlySelected.set(record.selectedName, record.date);
-            });
-            eligibleParticipants.sort((a, b) => {
-                const aLastSelected = recentlySelected.get(a.name);
-                const bLastSelected = recentlySelected.get(b.name);
-
-                if (!aLastSelected) return -1;
-                if (!bLastSelected) return 1;
-                return new Date(aLastSelected).getTime() - new Date(bLastSelected).getTime();
+                recentlySelected.set(record.participantName, record.selectedAt);
             });
             const neverSelected = eligibleParticipants.filter(p => !recentlySelected.has(p.name));
+
             if (neverSelected.length > 0) {
                 eligibleParticipants = neverSelected;
             } else {
+                eligibleParticipants.sort((a, b) => {
+                    const aLastSelected = recentlySelected.get(a.name) || '1970-01-01';
+                    const bLastSelected = recentlySelected.get(b.name) || '1970-01-01';
+                    return new Date(aLastSelected).getTime() - new Date(bLastSelected).getTime();
+                });
+
                 const halfLength = Math.ceil(eligibleParticipants.length / 2);
                 eligibleParticipants = eligibleParticipants.slice(0, halfLength);
             }

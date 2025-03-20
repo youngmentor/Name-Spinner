@@ -76,18 +76,23 @@ const MeetingsList = () => {
                                         >
                                             Details
                                         </Link>
-                                        <Link
-                                            to={`/meetings/${meeting?._id}/spin-participants`}
-                                            className="text-xs px-3 py-1.5 border rounded hover:bg-gray-50 flex items-center gap-1"
-                                        >
-                                            <UserPlus className="h-3 w-3" /> Participants
-                                        </Link>
-                                        <Link
-                                            to={`/meetings/${meeting?._id}/spinner`}
-                                            className="text-xs px-3 py-1.5 bg-blue-500 text-white rounded hover:bg-blue-600 flex items-center gap-1"
-                                        >
-                                            <Play className="h-3 w-3" /> Spin
-                                        </Link>
+                                        {
+                                            meeting?.participants?.length > 0 ?
+                                                <Link
+                                                    to={`/meetings/${meeting?._id}/spin-participants`}
+                                                    className="text-xs px-3 py-1.5 bg-blue-500 text-white rounded hover:bg-blue-600 flex items-center gap-1"
+                                                >
+                                                    <Play className="h-3 w-3" /> Spin
+                                                </Link>
+                                                :
+                                                <Link
+                                                    to={`/meetings/${meeting?._id}/add-participants`}
+                                                    className="text-xs px-3 py-1.5 bg-blue-500 text-white rounded hover:bg-blue-600 flex items-center gap-1"
+                                                >
+                                                    <UserPlus className="h-3 w-3" /> Add Partiipants
+                                                </Link>
+                                        }
+
                                     </div>
                                 </div>
                             ))}

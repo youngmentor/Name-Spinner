@@ -5,6 +5,7 @@ import MeetingsList from './pages/meetingList';
 import AddParticipants from './pages/addParticipants';
 import MeetingDetails from './pages/meetingDetails';
 import ParticipantsList from './pages/spinParticipants';
+import { Toaster } from 'react-hot-toast';
 // import FileUploadSpinner from './NameSpinner';
 
 
@@ -20,6 +21,7 @@ const App: React.FC = () => {
           <Route path='/meetings/:meetingId/spin-participants' element={<ParticipantsList />} />
         </Routes>
       </HashRouter>
+      <Toaster/>
     </div>
   );
 };

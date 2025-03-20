@@ -12,7 +12,9 @@ export const getAllMeeting = async () => {
 }
 
 export const addParticicpantToMeeting = async (id: string, file: File) => {
-    return await axios.post(`${VITE_ENDPOINT}/meetings/${id}/add-participants`, file)
+    const formData = new FormData();
+    formData.append('file', file);
+    return await axios.post(`${VITE_ENDPOINT}/meetings/${id}/add-participants`, formData)
 }
 
 export const getParticipantsByMeetingId = async (id: string) => {

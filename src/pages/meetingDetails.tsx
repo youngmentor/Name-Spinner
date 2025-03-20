@@ -55,8 +55,8 @@ const MeetingDetails = () => {
                             {meeting?.name}
                         </CardTitle>
                         <div className="flex space-x-2">
-                            <Link to={`/meetings/${meetingId}/participants`} className="px-3 py-1.5 border rounded hover:bg-gray-50 flex items-center gap-1 text-sm">
-                                <UserPlus className="h-4 w-4" /> Manage Participants
+                            <Link to={`/meetings/${meetingId}/add-participants`} className="px-3 py-1.5 border rounded hover:bg-gray-50 flex items-center gap-1 text-sm">
+                                <UserPlus className="h-4 w-4" /> Add Participants
                             </Link>
                             <Link to={`/meetings/${meetingId}/spin-participants`} className="px-3 py-1.5 bg-blue-500 text-white rounded hover:bg-blue-600 flex items-center gap-1 text-sm">
                                 <Play className="h-4 w-4" /> Start Spinner

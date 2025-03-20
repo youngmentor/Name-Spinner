@@ -34,7 +34,7 @@ const CreateMeeting = () => {
             <Card className="w-[500px] shadow-xl">
                 <CardHeader>
                     <CardTitle className="text-3xl font-bold text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                        Create New Meeting For Selecting your next host 
+                        Create New Meeting 
                     </CardTitle>
                 </CardHeader>
 
